@@ -78,7 +78,7 @@ async function getAllBlogs(req, res) {
   if (isMongoConnected()) {
     try {
       const blogs = await Blog.find().sort({ createdAt: -1 });
-      return res.json(blogs);
+      return res.json(blogs.length > 0 ? blogs : fallbackBlogs);
     } catch (error) {
       return res.status(500).json({ message: 'Unable to fetch blogs.' });
     }
@@ -93,8 +93,10 @@ async function getBlogById(req, res) {
   if (isMongoConnected()) {
     try {
       const blog = await Blog.findById(id);
-      if (!blog) return res.status(404).json({ message: 'Blog not found.' });
-      return res.json(blog);
+      if (blog) return res.json(blog);
+      const fallbackBlog = fallbackBlogs.find((item) => item._id === id || item.title === id);
+      if (fallbackBlog) return res.json(fallbackBlog);
+      return res.status(404).json({ message: 'Blog not found.' });
     } catch (error) {
       return res.status(500).json({ message: 'Unable to fetch blog.' });
     }
@@ -121,7 +123,10 @@ async function searchBlogs(req, res) {
           { content: { $regex: keyword, $options: 'i' } }
         ]
       }).sort({ createdAt: -1 });
-      return res.json(blogs);
+      return res.json(blogs.length > 0 ? blogs : fallbackBlogs.filter((blog) => {
+        const text = `${blog.title} ${blog.excerpt} ${blog.content}`.toLowerCase();
+        return text.includes(keyword.toLowerCase());
+      }));
     } catch (error) {
       return res.status(500).json({ message: 'Search failed.' });
     }
