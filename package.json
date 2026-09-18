@@ -1,0 +1,29 @@
+{
+  "name": "student-edu-blog",
+  "version": "1.0.0",
+  "description": "Student-friendly educational blog website with blogs, comments, and follower system",
+  "main": "backend/server.js",
+  "scripts": {
+    "dev": "nodemon --watch backend --ext js,json backend/server.js",
+    "start": "node backend/server.js",
+    "seed": "node backend/seed/seedBlogs.js"
+  },
+  "keywords": [
+    "blog",
+    "education",
+    "express",
+    "mongodb",
+    "bootstrap"
+  ],
+  "author": "Copilot",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

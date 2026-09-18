@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyNest Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="blogger-body">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-label">Followers</div>
+          <div class="followers-total" id="follower-count">0</div>
+        </div>
+
+        <div class="profile-box">
+          <div class="education-emblem" aria-label="Education emblem">
+            <span>📚</span>
+            <small>LEARN<br />GROW<br />SHARE</small>
+          </div>
+          <h3>StudyNest Community</h3>
+          <button class="visit-btn" id="visit-profile-button" type="button">Visit Profile</button>
+
+          <form id="follow-form" class="follow-form">
+            <button type="submit" id="follow-button">FOLLOW</button>
+          </form>
+        </div>
+
+        <div class="profile-details" id="profile-details" hidden>
+          <button class="profile-close" id="profile-close-button" type="button" aria-label="Close profile">×</button>
+          <h4>About StudyNest</h4>
+          <p>A student learning community for practical study habits, campus ideas, career preparation, and skill development.</p>
+          <div class="profile-facts">
+            <span>📖 Study tips</span>
+            <span>🎓 Career guidance</span>
+            <span>🤝 Student community</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h4>Followers</h4>
+          <div id="followers-list" class="followers-list">
+            <p class="no-followers-message">Loading real followers...</p>
+          </div>
+        </div>
+
+        <div class="sidebar-section report-box">
+          <a href="#">Report Abuse</a>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <header class="site-banner">
+          <div class="banner-topbar">
+            <div class="brand-name">StudyNest</div>
+            <button type="button" class="search-button" id="search-toggle" aria-label="Search">⌕</button>
+          </div>
+          <div class="banner-title-wrap">
+            <h1>Student Growth Journal</h1>
+          </div>
+        </header>
+
+        <div class="search-box" id="search-box">
+          <form id="search-form">
+            <input id="search-input" type="text" placeholder="Search posts..." />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+        <div id="posts-container" class="posts-container"></div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
