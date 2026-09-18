@@ -98,6 +98,8 @@ async function getBlogById(req, res) {
       if (fallbackBlog) return res.json(fallbackBlog);
       return res.status(404).json({ message: 'Blog not found.' });
     } catch (error) {
+      const fallbackBlog = fallbackBlogs.find((item) => item._id === id || item.title === id);
+      if (fallbackBlog && error.name === 'CastError') return res.json(fallbackBlog);
       return res.status(500).json({ message: 'Unable to fetch blog.' });
     }
   }
